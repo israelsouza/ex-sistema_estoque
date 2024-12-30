@@ -9,7 +9,17 @@ const prompt = require('prompt-sync')();
 */
 
 var resp = 7
-var ferramentas = []
+var ferramentas = [{
+    nome: 'martelo',
+    categoria: 'manual',
+    p_unidade: 7.45,
+    qtd_total: 45
+}, {
+    nome: 'serrote',
+    categoria: 'manual',
+    p_unidade: 9.45,
+    qtd_total: 52
+}]
 
 function cadastrarFerramenta() {
     nome = prompt('Qual o nome da ferramenta que deseja cadastrar? ')
@@ -27,7 +37,16 @@ function cadastrarFerramenta() {
 }
 
 function consultarFerramenta() {
+    for (let i = 0; i < ferramentas.length; i++) {
+        console.log( ferramentas[i].nome )
+    }
 
+    let consulta = prompt('Qual ferramenta deseja consultar? ')
+
+    for(let i = consulta; i < ferramentas.length; i++){
+        console.log(ferramentas[i])
+        break
+    }
 }
 
 function atualizarQuantidadeFerramenta() {
