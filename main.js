@@ -45,10 +45,12 @@ function cadastrarFerramenta() {
 
 function consultarFerramenta() {
     for (let i = 0; i < ferramentas.length; i++) {
-        console.log(ferramentas[i].nome + ". código: "+ i)
+        console.log(ferramentas[i].nome + ". código: " + i)
     }
 
+    console.log()
     let consulta = Number(prompt('Qual o código da ferramenta que deseja consultar? '))
+    console.log()
 
     if (validarNumeroDigitado(consulta) == true) {
         console.log(numeroInvalido)
@@ -61,7 +63,22 @@ function consultarFerramenta() {
 }
 
 function atualizarQuantidadeFerramenta() {
+    console.log("É sempre bom ter mais ferramentas em estoque!\nEssas são as quantidades atuais")
+    console.log()
 
+    for (let i = 0; i < ferramentas.length; i++) {
+        console.log(ferramentas[i].nome + " --- quantidade: " + ferramentas[i].qtd_total + " --- código: " + i)
+    }
+
+    console.log()
+    let codigo = Number(prompt('Insira o código da ferramenta que fez a compra  '))
+    let novaQtdd = Number(prompt('Quantas unidades dessa ferramenta você comprou? '))
+
+    ferramentas[codigo].qtd_total = ferramentas[codigo].qtd_total + novaQtdd
+
+    console.log()
+    console.log("Quantidade atualizada!!")
+    console.log("Quantidade atual: " + ferramentas[codigo].qtd_total)
 }
 
 function removerFerramenta() {
@@ -72,11 +89,12 @@ function exibirFerramentasPorCategoria() {
 
 }
 
-const nome = prompt("qual o seu nome?")
+const usuario = prompt("qual o seu nome? ")
 
 
 while (resp > 0) {
-    console.log("Seja bem-vindo(a) " + nome + " !!")
+    console.log()
+    console.log("Seja bem-vindo(a) " + usuario + " !!")
     console.log("Escolha a ação desejada")
     console.log("1. Cadastrar ferramenta")
     console.log("2. Consultar ferramenta")
@@ -87,6 +105,8 @@ while (resp > 0) {
     console.log("0. Encerrar o sistema")
 
     let cod = Number(prompt('Digite a opção desejada: '));
+
+    console.log()
 
     switch (cod) {
         case 1:
