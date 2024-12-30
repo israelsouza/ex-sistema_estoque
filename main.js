@@ -21,6 +21,13 @@ var ferramentas = [{
     qtd_total: 52
 }]
 
+const numeroInvalido = 'ERRO: o número digitado é menor ou maior que o número permitido, tente novamente'
+
+function validarNumeroDigitado(number) {
+    if (number < 0 || number > ferramentas.length - 1) return true
+    else return false
+}
+
 function cadastrarFerramenta() {
     nome = prompt('Qual o nome da ferramenta que deseja cadastrar? ')
     categoria = prompt('Qual o a categoria da ferramenta que deseja cadastrar? ')
@@ -38,14 +45,18 @@ function cadastrarFerramenta() {
 
 function consultarFerramenta() {
     for (let i = 0; i < ferramentas.length; i++) {
-        console.log( ferramentas[i].nome )
+        console.log(ferramentas[i].nome + ". código: "+ i)
     }
 
-    let consulta = prompt('Qual ferramenta deseja consultar? ')
+    let consulta = Number(prompt('Qual o código da ferramenta que deseja consultar? '))
 
-    for(let i = consulta; i < ferramentas.length; i++){
-        console.log(ferramentas[i])
-        break
+    if (validarNumeroDigitado(consulta) == true) {
+        console.log(numeroInvalido)
+    } else {
+        for (let i = consulta; i < ferramentas.length; i++) {
+            console.log(ferramentas[i])
+            break
+        }
     }
 }
 
@@ -61,14 +72,14 @@ function exibirFerramentasPorCategoria() {
 
 }
 
-
+const nome = prompt("qual o seu nome?")
 
 
 while (resp > 0) {
-    console.log("Seja bem-vindo!!")
+    console.log("Seja bem-vindo(a) " + nome + " !!")
     console.log("Escolha a ação desejada")
     console.log("1. Cadastrar ferramenta")
-    console.log("2. Consultar ferramenta (por código ou nome)")
+    console.log("2. Consultar ferramenta")
     console.log("3. Atualizar quantidade em estoque")
     console.log("4. Remover ferramenta do estoque")
     console.log("5. Exibir o total do valor em estoque")
