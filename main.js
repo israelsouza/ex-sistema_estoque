@@ -1,49 +1,25 @@
-const prompt = require('prompt-sync')();
+/* IMPORTAÇÕES */
 
-/* 
-    - cadastrar, 
-    - consultar,
-    - atualizar e remover itens do estoque,
-    - bem como calcular valor total do estoque 
-    - listar ferramentas por categorias.
-*/
+const menu = require('./utils/menu')
+const {obterCodigoMenuOpcoes} = require('./utils/prompt')
+const cadastro = require('./services/cadastrarFerramenta')
 
 
-
+/* VARIÁVEIS */
 var resp = 7
 var ferramentas = []
 
 var idContador = 0
 
-
 const numeroInvalido = 'ERRO: o número digitado é menor ou maior que o número permitido, tente novamente'
 
+/* FUNÇÕES */
 function validarNumeroDigitado(number) {
     if (number < 0 || number > ferramentas.length - 1) return true
     else return false
 }
 
-function cadastrarFerramenta() {
-    console.clear()
 
-    nome = prompt('Qual o nome da ferramenta que deseja cadastrar? ')
-    categoria = prompt('Qual o a categoria da ferramenta que deseja cadastrar? ')
-    p_unidade = Number(prompt('Preço de uma unidade: '))
-    qtd_total = Number(prompt('Qual a quantidade que deseja cadastrar? '))
-
-    var obj = new Object()
-    obj.id = idContador++
-    obj.nome = nome
-    obj.categoria = categoria
-    obj.p_unidade = p_unidade
-    obj.qtd_total = qtd_total
-
-    ferramentas.push(obj)
-
-    console.log("Ferramenta cadastrada com sucesso!")
-
-
-}
 
 function consultarFerramenta() {
     for (let i = 0; i < ferramentas.length; i++) {
@@ -135,24 +111,14 @@ const usuario = prompt("qual o seu nome? ")
 
 
 while (resp > 0) {
-    console.log()
-    console.log("---------------------------------")
-    console.log("Seja bem-vindo(a) " + usuario + " !!")
-    console.log("1. Cadastrar ferramenta")
-    console.log("2. Consultar ferramenta")
-    console.log("3. Atualizar quantidade em estoque")
-    console.log("4. Remover ferramenta do estoque")
-    console.log("5. Exibir o total do valor em estoque")
-    console.log("6. Listar ferramentas por categoria")
-    console.log("0. Encerrar o sistema")
-    console.log("---------------------------------")
-    console.log()
 
-    let cod = Number(prompt('Digite a opção desejada: '));
+    menu(usuario)
+    
+    obterCodigoMenuOpcoes()
 
     switch (cod) {
         case 1:
-            cadastrarFerramenta()
+            cadastro()
             break;
 
         case 2:
@@ -188,3 +154,4 @@ while (resp > 0) {
 }
 
 console.log('fim o programa')
+
