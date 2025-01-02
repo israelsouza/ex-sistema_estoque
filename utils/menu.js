@@ -1,5 +1,5 @@
 const menu = (nome) => {
-    console.clear();
+
     console.log("---------------------------------");
     console.log("Seja bem-vindo(a) " + nome + " !!");
     console.log("1. Cadastrar ferramenta");
