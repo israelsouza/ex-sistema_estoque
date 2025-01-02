@@ -1,13 +1,13 @@
 /* IMPORTAÇÕES */
 
-const menu = require('./utils/menu')
-const {obterCodigoMenuOpcoes} = require('./utils/prompt')
-const cadastro = require('./services/cadastrarFerramenta')
+const cadastrarFerramenta = require('./services/cadastrarFerramenta');
+const menu = require('./utils/menu');
+const { obterCodigoMenuOpcoes, obterNomeDoUsuario } = require('./utils/prompt');
 
 
 /* VARIÁVEIS */
-var resp = 7
-var ferramentas = []
+var resp = 7;
+
 
 var idContador = 0
 
@@ -107,20 +107,20 @@ function exibirFerramentasPorCategoria() {
 
 }
 
-const usuario = prompt("qual o seu nome? ")
+const usuario = obterNomeDoUsuario()
 
+console.clear();
 
 while (resp > 0) {
 
-    menu(usuario)
-    
-    obterCodigoMenuOpcoes()
+    menu(usuario);
+
+    var cod = obterCodigoMenuOpcoes();
 
     switch (cod) {
         case 1:
-            cadastro()
+            cadastrarFerramenta();
             break;
-
         case 2:
             consultarFerramenta()
             break;
