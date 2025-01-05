@@ -109,49 +109,52 @@ function exibirFerramentasPorCategoria() {
 
 const usuario = obterNomeDoUsuario()
 
-console.clear();
+console.clear()
+async function executarMenu() {
 
-while (resp > 0) {
+    while (resp > 0) {
 
-    menu(usuario);
+        menu(usuario);
 
-    var cod = obterCodigoMenuOpcoes();
+        var cod = obterCodigoMenuOpcoes();
 
-    switch (cod) {
-        case 1:
-            cadastrarFerramenta();
-            break;
-        case 2:
-            consultarFerramenta()
-            break;
+        switch (cod) {
+            case 1:
+                await cadastrarFerramenta();
+                break;
+            case 2:
+                consultarFerramenta()
+                break;
 
-        case 3:
-            atualizarQuantidadeFerramenta()
-            break;
+            case 3:
+                atualizarQuantidadeFerramenta()
+                break;
 
-        case 4:
-            removerFerramenta()
-            break;
+            case 4:
+                removerFerramenta()
+                break;
 
-        case 5:
-            mostrarValorTotalEstoque()
-            break;
+            case 5:
+                mostrarValorTotalEstoque()
+                break;
 
 
-        case 6:
-            exibirFerramentasPorCategoria()
-            break;
+            case 6:
+                exibirFerramentasPorCategoria()
+                break;
 
-        case 0:
-            resp = 0
-            console.log(`saindo do programa`)
-            break;
-        default:
-            console.log("ERRO: digite um valor valido")
-            break;
+            case 0:
+                resp = 0
+                console.log(`saindo do programa`)
+                break;
+            default:
+                console.log("ERRO: digite um valor valido")
+                break;
+        }
+
     }
 
+    console.log('fim o programa')
 }
 
-console.log('fim o programa')
-
+executarMenu()
