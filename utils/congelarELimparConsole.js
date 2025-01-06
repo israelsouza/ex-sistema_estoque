@@ -1,9 +1,9 @@
-function congelarELimparConsole() {
+function congelarELimparConsole(tempo) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve();
             console.clear();
-        }, 1000)
+        }, tempo)
     });
 
 }
