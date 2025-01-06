@@ -3,7 +3,6 @@ const congelarELimparConsole = require('../utils/congelarELimparConsole')
 const { entradasDeCadastrarFerramenta } = require('../utils/prompt');
 const { ferramentas, incrementarIdFerramentas } = require('../data/ferramentas');
 
-
 async function cadastrarFerramenta() {
     console.clear();
 

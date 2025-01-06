@@ -7,9 +7,7 @@ const { obterCodigoMenuOpcoes, obterNomeDoUsuario } = require('./utils/prompt');
 
 /* VARIÁVEIS */
 var resp = 7;
-
-
-var idContador = 0
+let idContador = 0;
 
 const numeroInvalido = 'ERRO: o número digitado é menor ou maior que o número permitido, tente novamente'
 
@@ -18,8 +16,6 @@ function validarNumeroDigitado(number) {
     if (number < 0 || number > ferramentas.length - 1) return true
     else return false
 }
-
-
 
 function consultarFerramenta() {
     for (let i = 0; i < ferramentas.length; i++) {
@@ -107,16 +103,19 @@ function exibirFerramentasPorCategoria() {
 
 }
 
-const usuario = obterNomeDoUsuario()
+/* Inicio Programa */
 
-console.clear()
+const usuario = obterNomeDoUsuario();
+
+console.clear();
+
 async function executarMenu() {
 
-    while (resp > 0) {
+    while (resp != 0) {
 
         menu(usuario);
 
-        var cod = obterCodigoMenuOpcoes();
+        let cod = obterCodigoMenuOpcoes();
 
         switch (cod) {
             case 1:
