@@ -7,7 +7,14 @@ const { ferramentas, incrementarIdFerramentas } = require('../data/ferramentas')
 async function cadastrarFerramenta() {
     console.clear();
 
-    entradasDeCadastrarFerramenta();
+    const entradas = entradasDeCadastrarFerramenta()
+
+    if ( entradas === null ) {
+        await congelarELimparConsole(1000);
+        console.log('EERO: voltando ao menu inicial.');
+        await congelarELimparConsole(1500);
+        return;
+    }
 
     const { nome, categoria, p_unidade, qtd_total } = entradasDeCadastrarFerramenta;
 
@@ -23,9 +30,8 @@ async function cadastrarFerramenta() {
     console.log();
     console.log("Processando...");
 
-    const resultado = await mostrarMensagemDeSucesso('Ferramenta cadastrada com sucesso');
-    
-    await congelarELimparConsole();
+    await mostrarMensagemDeSucesso('Ferramenta cadastrada com sucesso'); 
+    await congelarELimparConsole(1000);
 }
 
 module.exports = cadastrarFerramenta;
