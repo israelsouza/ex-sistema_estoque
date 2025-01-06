@@ -6,14 +6,12 @@
     só numero inteiro em QTDD
  */
 
-const verificarCampoNulo = (string) => { 
+const verificarCampoNulo = (string) => {
     if (string === '') {
         console.log('Campo vazio');
         return null;
     }
- }
-
-
+}
 
 const verificarQuantidadeCaracteres = (string, min, max) => {
     if (string.length < min) {
@@ -29,16 +27,24 @@ const verificarQuantidadeCaracteres = (string, min, max) => {
 
 const verificarSeTemNumeros = (string) => {
     if (/\d/.test(string)) {
-        console.log('Esse campo não pode ter número')
-        return null
+        console.log('Esse campo não pode ter número');
+        return null;
     }
 }
-const verificarSeTemLetras = (p_unidade, qtd_total) => { }
+
+const verificarSeTemLetras = (numero) => {
+    if (/[a-zA-Z]/.test(numero)) {
+        console.log('Esse campo não pode ter letras');
+        return null;
+    }
+}
+
 const verificarSeTemCaractereEspecial = (em_todos_atributos) => { }
 const verificarValorPositivo = () => { }
 
 module.exports = {
     verificarSeTemNumeros,
     verificarQuantidadeCaracteres,
-    verificarCampoNulo
+    verificarCampoNulo,
+    verificarSeTemLetras
 }
