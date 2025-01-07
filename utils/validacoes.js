@@ -1,15 +1,20 @@
 // validações
 /* 
-    se o NOME digitado ja existe no array FERRAMENTAS 
     se tiver espaço antes e no final, retirar de NOME, CATEGORIA
-    trocar , por .
-    só numero inteiro em QTDD
+
  */
 
 const verificarCampoNulo = (string) => {
     if (string === '') {
         console.log('Campo vazio');
         return null;
+    }
+}
+
+const verificarEspacoComecoFinalString = (string) => {
+    if (string.match(/( )/d)) {
+        console.log("Não pode ter espaço no começo ou fim desse campo");
+        return null
     }
 }
 
@@ -47,12 +52,12 @@ const verificarCaractereEspecial = (valor, regex) => {
 }
 
 const verificarCaractereEspecialGeral = (valor) => {
-    const regex = /[!@#\$%\^\&*\)\(+=.,_]/;
+    const regex = /[!@;:#\$%\^\&*\)\(+=.,_]/;
     return verificarCaractereEspecial(valor, regex)
 }
 
 const verificarCaractereEspecialPreco = (valor) => { 
-    const regex = /[!@#\$%\^\&*\)\(+=_]/;
+    const regex = /[!@;:#\$%\^\&*\)\(+=_,]/;
     return verificarCaractereEspecial(valor, regex)
 }
 
@@ -70,5 +75,6 @@ module.exports = {
     verificarSeTemLetras,
     verificarValorPositivo,
     verificarCaractereEspecialGeral,
-    verificarCaractereEspecialPreco
+    verificarCaractereEspecialPreco,
+    verificarEspacoComecoFinalString
 }

@@ -6,7 +6,8 @@ const {
     verificarSeTemLetras,
     verificarValorPositivo,
     verificarCaractereEspecialGeral,
-    verificarCaractereEspecialPreco
+    verificarCaractereEspecialPreco,
+    verificarEspacoComecoFinalString
 } = require('../utils/validacoes');
 
 const obterNomeDoUsuario = () => {
@@ -25,6 +26,7 @@ const entradasDeCadastrarFerramenta = () => {
     if (verificarSeTemNumeros(nome) === null) return null;
     if (verificarQuantidadeCaracteres(nome, 2, 50) === null) return null;
     if (verificarCaractereEspecialGeral(nome) === null) return null;
+    if (verificarEspacoComecoFinalString(nome) === null) return null;
 
     const categoria = prompt('Qual o a categoria da ferramenta que deseja cadastrar? ');
 
@@ -32,14 +34,16 @@ const entradasDeCadastrarFerramenta = () => {
     if (verificarSeTemNumeros(categoria) === null) return null;
     if (verificarQuantidadeCaracteres(categoria, 5, 50) === null) return null;
     if (verificarCaractereEspecialGeral(categoria) === null) return null;
+    if (verificarEspacoComecoFinalString(categoria) === null) return null;
 
 
-    let p_unidade = prompt('Preço de uma unidade: ');
+    let p_unidade = prompt('Preço de uma unidade: ').replace(',','.');
 
     if (verificarCampoNulo(p_unidade) === null) return null;
     if (verificarSeTemLetras(p_unidade) === null) return null;
     if (verificarCaractereEspecialPreco(p_unidade) === null) return null;
     if (verificarValorPositivo(p_unidade) === null) return null;
+    if (verificarEspacoComecoFinalString(p_unidade) === null) return null;
     
     let qtd_total = prompt('Qual a quantidade que deseja cadastrar? ');
     
@@ -47,6 +51,7 @@ const entradasDeCadastrarFerramenta = () => {
     if (verificarSeTemLetras(qtd_total) === null) return null;
     if (verificarCaractereEspecialGeral(qtd_total) === null) return null;
     if (verificarValorPositivo(qtd_total) === null) return null;
+    if (verificarEspacoComecoFinalString(qtd_total) === null) return null;
 
     p_unidade = Number(p_unidade);
     qtd_total = Number(qtd_total);
