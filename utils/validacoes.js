@@ -39,12 +39,36 @@ const verificarSeTemLetras = (numero) => {
     }
 }
 
-const verificarSeTemCaractereEspecial = (em_todos_atributos) => { }
-const verificarValorPositivo = () => { }
+const verificarCaractereEspecial = (valor, regex) => { 
+    if (regex.test(valor)) {
+        console.log('Esse campo não pode ter caracter especial');
+        return null;
+    }
+}
+
+const verificarCaractereEspecialGeral = (valor) => {
+    const regex = /[!@#\$%\^\&*\)\(+=.,_]/;
+    return verificarCaractereEspecial(valor, regex)
+}
+
+const verificarCaractereEspecialPreco = (valor) => { 
+    const regex = /[!@#\$%\^\&*\)\(+=_]/;
+    return verificarCaractereEspecial(valor, regex)
+}
+
+const verificarValorPositivo = (valor) => { 
+    if ( valor <= 0 ) {
+        console.log("Esse campo não pode ter numero menor que 0");
+        return null;
+    }
+ }
 
 module.exports = {
     verificarSeTemNumeros,
     verificarQuantidadeCaracteres,
     verificarCampoNulo,
-    verificarSeTemLetras
+    verificarSeTemLetras,
+    verificarValorPositivo,
+    verificarCaractereEspecialGeral,
+    verificarCaractereEspecialPreco
 }
