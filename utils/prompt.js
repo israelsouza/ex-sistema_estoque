@@ -1,4 +1,5 @@
 const prompt = require('prompt-sync')();
+const { ferramentas } = require('../data/ferramentas');
 const {
     verificarSeTemNumeros,
     verificarQuantidadeCaracteres,
@@ -7,7 +8,8 @@ const {
     verificarValorPositivo,
     verificarCaractereEspecialGeral,
     verificarCaractereEspecialPreco,
-    verificarEspacoComecoFinalString
+    verificarEspacoComecoFinalString,
+    verificarSeFerramentaJaTemCadastro
 } = require('../utils/validacoes');
 
 const obterNomeDoUsuario = () => {
@@ -20,7 +22,8 @@ const obterCodigoMenuOpcoes = () => {
 }
 
 const entradasDeCadastrarFerramenta = () => {
-    const nome = prompt('Qual o nome da ferramenta que deseja cadastrar? ');
+    const nome = prompt('Qual o nome da ferramenta que deseja cadastrar? ').toLowerCase();
+    console.log('NOME => ' + nome);
 
     if (verificarCampoNulo(nome) === null) return null;
     if (verificarSeTemNumeros(nome) === null) return null;
@@ -28,6 +31,8 @@ const entradasDeCadastrarFerramenta = () => {
     if (verificarCaractereEspecialGeral(nome) === null) return null;
     if (verificarEspacoComecoFinalString(nome) === null) return null;
 
+    if (verificarSeFerramentaJaTemCadastro(nome) === false) return null
+    
     const categoria = prompt('Qual o a categoria da ferramenta que deseja cadastrar? ');
 
     if (verificarCampoNulo(categoria) === null) return null;
@@ -37,16 +42,16 @@ const entradasDeCadastrarFerramenta = () => {
     if (verificarEspacoComecoFinalString(categoria) === null) return null;
 
 
-    let p_unidade = prompt('Preço de uma unidade: ').replace(',','.');
+    let p_unidade = prompt('Preço de uma unidade: ').replace(',', '.');
 
     if (verificarCampoNulo(p_unidade) === null) return null;
     if (verificarSeTemLetras(p_unidade) === null) return null;
     if (verificarCaractereEspecialPreco(p_unidade) === null) return null;
     if (verificarValorPositivo(p_unidade) === null) return null;
     if (verificarEspacoComecoFinalString(p_unidade) === null) return null;
-    
+
     let qtd_total = prompt('Qual a quantidade que deseja cadastrar? ');
-    
+
     if (verificarCampoNulo(qtd_total) === null) return null;
     if (verificarSeTemLetras(qtd_total) === null) return null;
     if (verificarCaractereEspecialGeral(qtd_total) === null) return null;

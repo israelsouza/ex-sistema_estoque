@@ -1,8 +1,4 @@
-// validações
-/* 
-    se tiver espaço antes e no final, retirar de NOME, CATEGORIA
-
- */
+const { ferramentas } = require('../data/ferramentas');
 
 const verificarCampoNulo = (string) => {
     if (string === '') {
@@ -44,7 +40,7 @@ const verificarSeTemLetras = (numero) => {
     }
 }
 
-const verificarCaractereEspecial = (valor, regex) => { 
+const verificarCaractereEspecial = (valor, regex) => {
     if (regex.test(valor)) {
         console.log('Esse campo não pode ter caracter especial');
         return null;
@@ -56,17 +52,26 @@ const verificarCaractereEspecialGeral = (valor) => {
     return verificarCaractereEspecial(valor, regex)
 }
 
-const verificarCaractereEspecialPreco = (valor) => { 
+const verificarCaractereEspecialPreco = (valor) => {
     const regex = /[!@;:#\$%\^\&*\)\(+=_,]/;
     return verificarCaractereEspecial(valor, regex)
 }
 
-const verificarValorPositivo = (valor) => { 
-    if ( valor <= 0 ) {
+const verificarValorPositivo = (valor) => {
+    if (valor <= 0) {
         console.log("Esse campo não pode ter numero menor que 0");
         return null;
     }
- }
+}
+
+const verificarSeFerramentaJaTemCadastro = (string) => {
+    for (const ferramenta of ferramentas) {
+        if (ferramenta.nome == string.toLowerCase()) {
+            console.log('Já tem uma ferramenta com esse nome');
+            return false;
+        }
+    }
+}
 
 module.exports = {
     verificarSeTemNumeros,
@@ -76,5 +81,6 @@ module.exports = {
     verificarValorPositivo,
     verificarCaractereEspecialGeral,
     verificarCaractereEspecialPreco,
-    verificarEspacoComecoFinalString
+    verificarEspacoComecoFinalString,
+    verificarSeFerramentaJaTemCadastro    
 }
